@@ -5,41 +5,32 @@
         private static void Main(string[] args)
         {
             Random random = new Random();
-            Character goodGuy = new Character();
-            Character badGuy = new Character();
 
             // Initialisation des objets
-            goodGuy.name = "Goku";
-            goodGuy.lifePoints = 10;
-            goodGuy.attackPoints = 9001;
-            goodGuy.defensePoints = 9000;
-
-            badGuy.name = "Végéta";
-            badGuy.lifePoints = 10;
-            badGuy.attackPoints = 9001;
-            badGuy.defensePoints = 9000;
+            Character goodGuy = new Character(10, 9001, 9000, "Goku");
+            Character badGuy = new Character(10, 9001, 9000, "Végéta");
 
             // Mise en scène
-            while (goodGuy.IsAlive() && badGuy.IsAlive())
+            while (goodGuy.IsAlive && badGuy.IsAlive)
             {
                 if (random.Next(2) == 0)
                 {
-                    goodGuy.Attack(badGuy);
+                    goodGuy.AttackEnemy(badGuy);
                 }
                 else
                 {
-                    badGuy.Attack(goodGuy);
+                    badGuy.AttackEnemy(goodGuy);
                 }
             }
 
             // Affichage
-            if (goodGuy.IsAlive())
+            if (goodGuy.IsAlive)
             {
-                Console.WriteLine($"{goodGuy.name} a gagné.");
+                Console.WriteLine($"{goodGuy.Name} a gagné.");
             }
             else
             {
-                Console.WriteLine($"{badGuy.name} a gagné.");
+                Console.WriteLine($"{badGuy.Name} a gagné.");
             }
         }
     }

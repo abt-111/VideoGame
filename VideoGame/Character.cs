@@ -2,29 +2,28 @@
 {
     internal class Character
     {
-        public int lifePoints, attackPoints, defensePoints;
-        public string name;
+        public int LifePoints { get; set; }
+        public int Attack { get; }
+        public int Defense { get; }
+        public string Name { get; }
+        public bool IsAlive => LifePoints > 0;
 
-        public bool IsAlive()
+        public Character(int lifePoint, int attack, int defense, string name)
         {
-            if (lifePoints <= 0)
-            {
-                return false;
-            }
-            else
-            {
-                return true;
-            }
+            LifePoints = lifePoint;
+            Attack = attack;
+            Defense = defense;
+            Name = name;
         }
 
-        public void Attack(Character enemy)
+        public void AttackEnemy(Character enemy)
         {
-            int damages = attackPoints - enemy.defensePoints;
+            int damages = Attack - enemy.Defense;
 
             // Un attaquant ne peut pas rajouter de points de vie à un attaqué
             if (damages < 0) damages = 0;
 
-            enemy.lifePoints -= damages;
+            enemy.LifePoints -= damages;
         }
     }
 }
