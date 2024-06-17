@@ -1,10 +1,8 @@
-﻿using System.Text;
-
-namespace VideoGame
+﻿namespace VideoGame
 {
     internal class Character
     {
-        public int lifePoints, attackForce, defenseForce;
+        public int lifePoints, attackPoints, defensePoints;
         public string name;
 
         public bool IsAlive()
@@ -21,7 +19,7 @@ namespace VideoGame
 
         public void Attack(Character enemy)
         {
-            enemy.lifePoints -= (attackForce - enemy.defenseForce);
+            enemy.lifePoints -= (attackPoints - enemy.defensePoints);
         }
     }
 }

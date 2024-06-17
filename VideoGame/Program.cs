@@ -1,23 +1,42 @@
 ﻿using VideoGame;
-using static System.Formats.Asn1.AsnWriter;
 
 internal class Program
 {
     private static void Main(string[] args)
     {
+        Random random = new Random();
         Character goodGuy = new Character();
         Character badGuy = new Character();
 
         goodGuy.name = "Goku";
         goodGuy.lifePoints = 10;
-        goodGuy.attackForce = 9001;
-        goodGuy.defenseForce = 9000;
+        goodGuy.attackPoints = 9001;
+        goodGuy.defensePoints = 9000;
 
         badGuy.name = "Végéta";
         badGuy.lifePoints = 10;
-        badGuy.attackForce = 9001;
-        badGuy.defenseForce = 9000;
+        badGuy.attackPoints = 9001;
+        badGuy.defensePoints = 9000;
 
-        // mise en scène
+        while(goodGuy.IsAlive() && badGuy.IsAlive())
+        {
+            if(random.Next(2) == 0)
+            {
+                goodGuy.Attack(badGuy);
+            }
+            else
+            {
+                badGuy.Attack(goodGuy);
+            }
+        }
+
+        if(goodGuy.IsAlive())
+        {
+            Console.WriteLine($"{goodGuy.name} a gagné.");
+        }
+        else
+        {
+            Console.WriteLine($"{badGuy.name} a gagné.");
+        }
     }
 }
