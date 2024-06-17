@@ -1,7 +1,9 @@
-﻿internal class Program
+﻿using VideoGame;
+
+internal class Program
 {
     private static void Main(string[] args)
     {
-        Console.WriteLine("Hello, World!");
+        Character personnage1 = new Character();
     }
 }
