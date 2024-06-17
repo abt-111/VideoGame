@@ -1,45 +1,46 @@
-﻿using VideoGame;
-
-internal class Program
+﻿namespace VideoGame
 {
-    private static void Main(string[] args)
+    internal class Program
     {
-        Random random = new Random();
-        Character goodGuy = new Character();
-        Character badGuy = new Character();
-
-        // Initialisation des objets
-        goodGuy.name = "Goku";
-        goodGuy.lifePoints = 10;
-        goodGuy.attackPoints = 9001;
-        goodGuy.defensePoints = 9000;
-
-        badGuy.name = "Végéta";
-        badGuy.lifePoints = 10;
-        badGuy.attackPoints = 9001;
-        badGuy.defensePoints = 9000;
-
-        // Mise en scène
-        while (goodGuy.IsAlive() && badGuy.IsAlive())
+        private static void Main(string[] args)
         {
-            if (random.Next(2) == 0)
+            Random random = new Random();
+            Character goodGuy = new Character();
+            Character badGuy = new Character();
+
+            // Initialisation des objets
+            goodGuy.name = "Goku";
+            goodGuy.lifePoints = 10;
+            goodGuy.attackPoints = 9001;
+            goodGuy.defensePoints = 9000;
+
+            badGuy.name = "Végéta";
+            badGuy.lifePoints = 10;
+            badGuy.attackPoints = 9001;
+            badGuy.defensePoints = 9000;
+
+            // Mise en scène
+            while (goodGuy.IsAlive() && badGuy.IsAlive())
             {
-                goodGuy.Attack(badGuy);
+                if (random.Next(2) == 0)
+                {
+                    goodGuy.Attack(badGuy);
+                }
+                else
+                {
+                    badGuy.Attack(goodGuy);
+                }
+            }
+
+            // Affichage
+            if (goodGuy.IsAlive())
+            {
+                Console.WriteLine($"{goodGuy.name} a gagné.");
             }
             else
             {
-                badGuy.Attack(goodGuy);
+                Console.WriteLine($"{badGuy.name} a gagné.");
             }
-        }
-
-        // Affichage
-        if (goodGuy.IsAlive())
-        {
-            Console.WriteLine($"{goodGuy.name} a gagné.");
-        }
-        else
-        {
-            Console.WriteLine($"{badGuy.name} a gagné.");
         }
     }
 }
