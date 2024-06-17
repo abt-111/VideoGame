@@ -7,7 +7,7 @@
 
         public bool IsAlive()
         {
-            if(lifePoints <= 0)
+            if (lifePoints <= 0)
             {
                 return false;
             }
@@ -19,7 +19,12 @@
 
         public void Attack(Character enemy)
         {
-            enemy.lifePoints -= (attackPoints - enemy.defensePoints);
+            int damages = attackPoints - enemy.defensePoints;
+
+            // Un attaquant ne peut pas rajouter de points de vie à un attaqué
+            if (damages < 0) damages = 0;
+
+            enemy.lifePoints -= damages;
         }
     }
 }

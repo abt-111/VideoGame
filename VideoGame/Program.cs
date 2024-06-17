@@ -8,6 +8,7 @@ internal class Program
         Character goodGuy = new Character();
         Character badGuy = new Character();
 
+        // Initialisation des objets
         goodGuy.name = "Goku";
         goodGuy.lifePoints = 10;
         goodGuy.attackPoints = 9001;
@@ -18,9 +19,10 @@ internal class Program
         badGuy.attackPoints = 9001;
         badGuy.defensePoints = 9000;
 
-        while(goodGuy.IsAlive() && badGuy.IsAlive())
+        // Mise en scène
+        while (goodGuy.IsAlive() && badGuy.IsAlive())
         {
-            if(random.Next(2) == 0)
+            if (random.Next(2) == 0)
             {
                 goodGuy.Attack(badGuy);
             }
@@ -30,7 +32,8 @@ internal class Program
             }
         }
 
-        if(goodGuy.IsAlive())
+        // Affichage
+        if (goodGuy.IsAlive())
         {
             Console.WriteLine($"{goodGuy.name} a gagné.");
         }
